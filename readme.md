@@ -14,7 +14,7 @@ examples are the best way to learn how to use it, but here it is in a
 nutshell:
 
 	try {
-	    $img = new SimpleImage\SimpleImage()('image.jpg');
+	    $img = new seydoggy\SimpleImage('image.jpg');
 	    $img->flip('x')->rotate(90)->best_fit(320, 200)->sepia()->save('result.gif');
 	} catch(Exception $e) {
 		echo 'Error: ' . $e->getMessage();
@@ -59,11 +59,11 @@ Using your favorite __autoloading magic and path to your classes ("classes/" in 
 
 You can load an image when you instantiate a new SimpleImage object:
 
-    $img = new SimpleImage\SimpleImage('image.jpg');
+    $img = new seydoggy\SimpleImage('image.jpg');
 
 Or you can load it later on:
 
-    $img = new SimpleImage\SimpleImage();
+    $img = new seydoggy\SimpleImage();
     $img->load('image.jpg');
 
 ### Saving
@@ -88,7 +88,7 @@ compression level.)
 When saving, the resulting image format is determined by the file
 extension. For example, you can convert a JPEG to a GIF by doing this:
 
-    $img = new SimpleImage\SimpleImage('image.jpg');
+    $img = new seydoggy\SimpleImage('image.jpg');
     $img->save('image.gif');
 
 ### Stripping EXIF data
@@ -98,7 +98,7 @@ there is currently no way to *prevent* EXIF data from being stripped
 using the GD library. However, you can easily strip EXIF data simply by
 loading and saving:
 
-    $img = new SimpleImage\SimpleImage()('image.jpg');
+    $img = new seydoggy\SimpleImage('image.jpg');
     $img->save();
 
 ### Method Chaining
@@ -106,7 +106,7 @@ loading and saving:
 SimpleImage supports method chaining, so you can make multiple changes
 and save the resulting image with just one line of code:
 
-    $img = new SimpleImage\SimpleImage()('image.jpg');
+    $img = new seydoggy\SimpleImage('image.jpg');
     $img->flip('x')->rotate(90)->best_fit(320, 200)->desaturate()->invert()->save('result.jpg')
 
 You can chain all of the methods below as well as the **load()**
@@ -120,7 +120,7 @@ always load/manipulate/save images inside of a *try/catch* block to
 handle them properly:
 
     try {
-        $img = new SimpleImage\SimpleImage()('image.jpg');
+        $img = new seydoggy\SimpleImage('image.jpg');
         $img->flip('x')->save('flipped.jpg');
     } catch(Exception $e) {
         echo 'Error: ' . $e->getMessage();
@@ -247,7 +247,7 @@ Differences from Version 1
 SimpleImage has been completely overhauled since version 1. Here are the
 most significant changes:
 
--   **Simple_Image** is now **SimpleImage\SimpleImage()**
+-   **Simple_Image** is now **seydoggy\SimpleImage()**
 -   For more efficient processing, the class now has public load and
     save methods. In version 1, these methods were automatically
     executed on every manipulation, which led to slower processing times
